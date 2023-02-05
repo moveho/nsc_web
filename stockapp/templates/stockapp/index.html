@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Main</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<style>
+    * {
+        box-sizing: border-box;
+      }
+
+    body {
+      margin: 0;
+    }
+
+/* Style the header */
+.header {
+  background-color: #56fdbd;
+  padding: 10px;
+  text-align: center;
+}
+
+
+/* Style the top navigation bar */
+.topnav {
+    overflow: hidden;
+    background-color: rgb(73, 88, 254);
+  }
+  
+  /* Style the topnav links */
+  .topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 10px 16px;
+    text-decoration: none;
+  }
+  
+  /* Change color on hover */
+  .topnav a:hover {
+    background-color: #ddd;
+    color: rgb(31, 123, 245);
+  }
+
+/* Create two equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 50%;
+    padding: 15px;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+  @media screen and (max-width:600px) {
+    .column {
+      width: 100%;
+    }
+  }
+
+  
+</style>
+</head>
+<body>
+    <div class="header">
+        <h1>No Sleep Car</h1>
+    </div>
+
+    <div class="topnav">
+        <a href="index.html">Home</a>
+        <a href="setting.html">설정</a>
+        <a href="mypage.html">My Page</a>
+        <a href="login.html">Log In</a>
+    </div>
+
+<style> 
+    .newspaper {
+     column-count: 2;
+        }
+</style>
+
+    <!-- <div class="row"> -->
+      <div class="column" style="background-color: #ffffff" align="center">
+        <h3>Driving Monitor</h3>
+          <video height="400" width="600" autoplay align="center"></video>
+            <script>
+                const video = document.querySelector('video');
+                navigator.mediaDevices.getUserMedia({ video: { width: 426, height: 240 } }).then((stream) => video.srcObject = stream);
+                const FPS = 3;
+                ws.onopen = () => {
+                setInterval(() => {
+                ws.send(getFrame());
+                    }, 100 / FPS);
+                }
+            </script>
+      <!-- </div>
+      <div align="center"> -->
+        <button class="button" type="button" id="testStartBtn" align="center">START</button>
+        <button class="button" type="button" id="testStopBtn">STOP</button>
+      </div>
+      
+      <div class="column" style="background-color: #ffffff" align="center">
+        <h3>Streaming Data</h3>
+          <video height="400" width="600" align="center"></video>
+            <script>
+                const video = document.querySelector('video');
+                navigator.mediaDevices.getUserMedia({ video: { width: 426, height: 240 } }).then((stream) => video.srcObject = stream);
+                const FPS = 3;
+                ws.onopen = () => {
+                setInterval(() => {
+                ws.send(getFrame());
+                    }, 100 / FPS);
+                }
+            </script>
+      </div>
+    </div>
+
+    
+
+</body>
+</html>
+
+​

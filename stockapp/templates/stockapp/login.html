@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Login</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+<script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+var emp = { 
+		"id" : "abcd",
+		"pw" : "1234",
+		"name" : "홍길동",
+		"point" : "1250"
+};
+$(document).ready(function(){
+	$("#loginb").click(function(){
+	     var sid = $("#uid").val();
+	     var spw = $("#pwd").val();
+	     
+	     if(sid=="" || spw=="")
+	     {
+			$("#result").text("아이디와 비밀번호를 입력해 주세요").css("color","black");			    	 
+	     }else{
+			if(emp.id==sid && emp.pw==spw){
+				alert(emp.name+"님 로그인 하셨습니다.\n현재 보유하신 포인터는 "+emp.point+"점 입니다");
+				$("#loginok").submit();
+			}else{
+				alert("아이디 또는 비밀번호가 틀립니다.");
+				$("#uid").val("");
+				$("#pwd").val("");
+				$("#uid").focus();
+			} 
+	     }		
+	});	
+	
+	$("#searId").click(function(){
+		$("#back").css("display", "block");
+	    $("#popup").css("display", "block");
+	});
+	
+	$(".close").click(function(){
+		$("#back").css("display", "none");
+	    $("#popup").css("display", "none");
+	});
+});
+</script>
+<style>
+    * {
+        box-sizing: border-box;
+      }
+
+    body {
+      margin: 0;
+    }
+
+/* Style the header */
+.header {
+  background-color: #f1f1f1;
+  padding: 10px;
+  text-align: center;
+}
+
+
+/* Style the top navigation bar */
+.topnav {
+    overflow: hidden;
+    background-color: rgb(73, 88, 254);
+  }
+  
+  /* Style the topnav links */
+  .topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 10px 16px;
+    text-decoration: none;
+  }
+  
+  /* Change color on hover */
+  .topnav a:hover {
+    background-color: #ddd;
+    color: rgb(31, 123, 245);
+  }
+  
+</style>
+</head>
+<body>
+    <div class="header">
+        <h1>No Sleep Car</h1>
+    </div>
+
+    <div class="topnav">
+        <a href="index.html">Home</a>
+        <a href="setting.html">설정</a>
+        <a href="mypage.html">My Page</a>
+        <a href="login.html">Log In</a>
+    </div>
+
+
+<section id="section2">
+  <div class="container">
+    <div class="loginBox">
+      
+        <div class="box">
+          <div class="social logo">
+              <h1>소셜 로그인하기</h1>
+                <button class="facebook">Google ID로 로그인</button>
+                <button class="twitter">카카오 ID로 로그인</button>
+                <button class="naver">네이버 ID로 로그인</button>
+          </div>
+        </div>             
+    </div>
+  </div>    
+</section>
+
+
+
+    
+
+</body>
+</html>
+
+​
