@@ -1,0 +1,30 @@
+version: "3.8"
+services: 
+    mariadbtest:
+        image: mariadb:10.5
+        networks: 
+            - docker
+        ports:
+            - 3306:3306
+        volumes: 
+            - ${PWD}/database:/var/lib/mysql
+        environment: 
+            MARIADB_ROOT_PASSWORD: 1234
+            MARIADB_DATABASE: django
+    
+    djangotest:
+        build: 
+            context: .
+            dockerfile: ./localbind.Dockerfile
+        networks: 
+            - docker
+        ports: 
+            - 8000:8000
+        volumes: 
+            - ${PWD}:/home/Docker_Practice
+        depends_on: 
+            - mariadbtest
+    
+networks: 
+    docker:
+        

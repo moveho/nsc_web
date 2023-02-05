@@ -1,0 +1,39 @@
+{% block content %}
+
+<div style="text-align: center;">
+    <h4>Kospi List</h4>
+    
+    {% if kospi_list %}
+        
+        {% for kospi in kospi_list %}
+        <span>{{ kospi.date }}</span>
+            <form action="{% url 'stockapp:delete' kospi.pk %}" method="POST">
+                {% csrf_token %}
+                <input style="color: red; cursor: pointer" type="submit" value='X'>
+            </form>
+            <br>
+        {% endfor %}
+            
+    {% endif %}
+    
+    <p style="color: blue;">
+        {% if message %}
+            {{ message }}
+        {% endif %}
+    </p>
+</div>
+
+<script>
+    function deletekospi(pk){
+        console.log("del")
+        console.log(pk)
+        $.ajax({
+            type: "POST",
+            url: "/stockapp/delete/"+pk,
+            data: {
+                'csrfmiddlewaretoken' : $("input[name=csrfmiddlewaretoken]").val()
+            },
+        });
+    }
+</script>
+{% endblock content %}
